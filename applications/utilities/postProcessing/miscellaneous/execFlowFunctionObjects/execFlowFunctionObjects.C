@@ -536,7 +536,7 @@ int main(int argc, char *argv[])
         if (mesh.readUpdate() != polyMesh::UNCHANGED)
         {
             // Update functionObjectList if mesh changes
-            folPtr = readFunctionObjects(args, runTime, folDict);
+            //~ folPtr = readFunctionObjects(args, runTime, folDict);
         }
 
         FatalIOError.throwExceptions();
