@@ -507,6 +507,7 @@ int main(int argc, char *argv[])
     #include "setRootCase.H"
     #include "createTime.H"
     Foam::instantList timeDirs = Foam::timeSelector::select0(runTime, args);
+    Foam::Time runTimePrev(Foam::Time::controlDictName, args);
     #include "createNamedMesh.H"
 
     // Externally stored dictionary for functionObjectList
@@ -522,8 +523,15 @@ int main(int argc, char *argv[])
     forAll(timeDirs, timeI)
     {
         runTime.setTime(timeDirs[timeI], timeI);
+        
+        if (timeI > 0)
+        {
+            runTimePrev.setTime(timeDirs[timeI - 1], timeI - 1);
+            runTime.setDeltaT(runTime.value() - runTimePrev.value());
+        }
 
         Info<< "Time = " << runTime.timeName() << endl;
+        Info<< "deltaT = " << runTime.deltaT().value() << endl;
 
         if (mesh.readUpdate() != polyMesh::UNCHANGED)
         {
