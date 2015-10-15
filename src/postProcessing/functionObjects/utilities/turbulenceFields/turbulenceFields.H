@@ -69,6 +69,8 @@ Description
         devReff     |
         nut         | turbulence viscosity (incompressible)
         nuEff       | effective turbulence viscosity (incompressible)
+        k           | turbulence kinetic energy
+        epsilon     | turbulence dissipation
     \endplaintable
 
 SeeAlso
