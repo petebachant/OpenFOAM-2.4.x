@@ -48,14 +48,16 @@ namespace Foam
         turbulenceFields::compressibleFieldNames_;
 
     template<>
-    const char* NamedEnum<turbulenceFields::incompressibleField, 4>::names[] =
+    const char* NamedEnum<turbulenceFields::incompressibleField, 6>::names[] =
     {
         "R",
         "devReff",
         "nut",
-        "nuEff"
+        "nuEff",
+        "k",
+        "epsilon"
     };
-    const NamedEnum<turbulenceFields::incompressibleField, 4>
+    const NamedEnum<turbulenceFields::incompressibleField, 6>
         turbulenceFields::incompressibleFieldNames_;
 
     const word turbulenceFields::modelName = "turbulenceModel";
@@ -240,6 +242,16 @@ void Foam::turbulenceFields::execute()
                 case ifNuEff:
                 {
                     processField<scalar>(f, model.nuEff());
+                    break;
+                }
+                case ifK:
+                {
+                    processField<scalar>(f, model.k());
+                    break;
+                }
+                case ifEpsilon:
+                {
+                    processField<scalar>(f, model.epsilon());
                     break;
                 }
                 default:

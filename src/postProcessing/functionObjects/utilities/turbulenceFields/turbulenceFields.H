@@ -123,9 +123,11 @@ public:
         ifR,
         ifDevReff,
         ifNut,
-        ifNuEff
+        ifNuEff,
+        ifK,
+        ifEpsilon
     };
-    static const NamedEnum<incompressibleField, 4> incompressibleFieldNames_;
+    static const NamedEnum<incompressibleField, 6> incompressibleFieldNames_;
 
     static const word modelName;
 
