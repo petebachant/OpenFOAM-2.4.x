@@ -116,9 +116,11 @@ public:
         cfMut,
         cfMuEff,
         cfAlphat,
-        cfAlphaEff
+        cfAlphaEff,
+        cfK,
+        cfEpsilon
     };
-    static const NamedEnum<compressibleField, 6> compressibleFieldNames_;
+    static const NamedEnum<compressibleField, 8> compressibleFieldNames_;
 
     enum incompressibleField
     {

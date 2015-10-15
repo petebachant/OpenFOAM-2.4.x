@@ -35,16 +35,18 @@ namespace Foam
     defineTypeNameAndDebug(turbulenceFields, 0);
 
     template<>
-    const char* NamedEnum<turbulenceFields::compressibleField, 6>::names[] =
+    const char* NamedEnum<turbulenceFields::compressibleField, 8>::names[] =
     {
         "R",
         "devRhoReff",
         "mut",
         "muEff",
         "alphat",
-        "alphaEff"
+        "alphaEff",
+        "k",
+        "epsilon"
     };
-    const NamedEnum<turbulenceFields::compressibleField, 6>
+    const NamedEnum<turbulenceFields::compressibleField, 8>
         turbulenceFields::compressibleFieldNames_;
 
     template<>
@@ -204,6 +206,16 @@ void Foam::turbulenceFields::execute()
                 case cfAlphaEff:
                 {
                     processField<scalar>(f, model.alphaEff());
+                    break;
+                }
+                case cfK:
+                {
+                    processField<scalar>(f, model.k());
+                    break;
+                }
+                case cfEpsilon:
+                {
+                    processField<scalar>(f, model.epsilon());
                     break;
                 }
                 default:
